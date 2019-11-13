@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Restaurants</h1>
+  <%= link_to "<- Back to list", restaurants_path %>
+    <div class="card m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @restaurant.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @restaurant.category %></h6>
+        <p class="card-text"><%= @restaurant.address %></p>
+        <p class="card-text"><%= @restaurant.phone_number %></p>
+        <%= link_to "Add review", new_restaurant_review_path(@restaurant.id) %>
+      </div>
+    </div>
+
+    <% @restaurant.reviews.each do |review| %>
+    <div class="card m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= "⭐" * review.rating %></h5>
+        <p class="card-text"><%= review.content %></p>
+      </div>
+    </div>
+    <% end %>
+</div>
